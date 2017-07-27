@@ -93,19 +93,19 @@
 
 
 
-<meta name="description" content="在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。">
+<meta name="description" content="在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。 ok,现在选一例自己感觉还是有一定难度动画6、圆形图片上传进行说明：首先，要思考要实现像第6个动画的形式的实现细节，并对动画进行分解。这个动画类似水箱注水的过程，在水逐渐注入水箱的过程中，水位逐渐上升，逐渐贮满；123-(BOOL) isF">
 <meta name="keywords" content="Mac,动画,进度条">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上的进度条动画">
 <meta property="og:url" content="http://yoursite.com/2017/07/27/progressAnimation20170727/index.html">
 <meta property="og:site_name" content="peterH">
-<meta property="og:description" content="在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。">
-<meta property="og:image" content="https://github.com/peterHchina/ProgressForMac/blob/master/20170727-112315.gif?raw=true">
-<meta property="og:updated_time" content="2017-07-27T04:03:09.000Z">
+<meta property="og:description" content="在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。 ok,现在选一例自己感觉还是有一定难度动画6、圆形图片上传进行说明：首先，要思考要实现像第6个动画的形式的实现细节，并对动画进行分解。这个动画类似水箱注水的过程，在水逐渐注入水箱的过程中，水位逐渐上升，逐渐贮满；123-(BOOL) isF">
+<meta property="og:image" content="https://github.com/peterHchina/ProgressForMac/blob/master/20170727-145852.gif?raw=true">
+<meta property="og:updated_time" content="2017-07-27T07:52:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上的进度条动画">
-<meta name="twitter:description" content="在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。">
-<meta name="twitter:image" content="https://github.com/peterHchina/ProgressForMac/blob/master/20170727-112315.gif?raw=true">
+<meta name="twitter:description" content="在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。 ok,现在选一例自己感觉还是有一定难度动画6、圆形图片上传进行说明：首先，要思考要实现像第6个动画的形式的实现细节，并对动画进行分解。这个动画类似水箱注水的过程，在水逐渐注入水箱的过程中，水位逐渐上升，逐渐贮满；123-(BOOL) isF">
+<meta name="twitter:image" content="https://github.com/peterHchina/ProgressForMac/blob/master/20170727-145852.gif?raw=true">
 
 
 
@@ -323,7 +323,12 @@
 
       
         <p>在iOS上写一个进度动画很容易，在Mac平台上相同风格的进度条思路也是差不多的，今天就最近项目中开发的一组动画中的一个，来分析一下Mac下写动画效果的注意点。</p>
-<div align="center"><br><img src="https://github.com/peterHchina/ProgressForMac/blob/master/20170727-112315.gif?raw=true" width="600" height="360"><br></div>
+<p><div align="center"><br><img src="https://github.com/peterHchina/ProgressForMac/blob/master/20170727-145852.gif?raw=true" width="624" height="382"><br></div><br>ok,现在选一例自己感觉还是有一定难度动画6、圆形图片上传进行说明：<br>首先，要思考要实现像第6个动画的形式的实现细节，并对动画进行分解。这个动画类似水箱注水的过程，在水逐渐注入水箱的过程中，水位逐渐上升，逐渐贮满；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(BOOL) isFlipped&#123;</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于Mac OS中view的坐标系在左下，iOS中view的坐标系在左上，有了之前在iOS上开发相同类型的动画经验，首先先反转坐标系保持和iOS上的一致，这样后面的代码就可以继承iOS上的了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">- (void)drawRect:(CGRect)rect&#123;</div><div class="line">    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];</div><div class="line">    CGFloat radius = MIN(rect.size.width * 0.5, rect.size.height * 0.5)-2;</div><div class="line">    CGFloat xCenter = rect.size.width * 0.5;</div><div class="line">    CGFloat yCenter = rect.size.height * 0.5;</div><div class="line">    </div><div class="line">    [[NSColor clearColor] setFill];</div><div class="line">    [[NSColor whiteColor] setStroke];</div><div class="line">    CGFloat w = radius * 2;</div><div class="line">    CGFloat h = w;</div><div class="line">    CGFloat x = (rect.size.width - w) * 0.5;</div><div class="line">    CGFloat y = (rect.size.height - h) * 0.5;</div><div class="line">    CGContextAddEllipseInRect(ctx, CGRectMake(x, y, w, h));</div><div class="line">    CGContextDrawPath(ctx,kCGPathFillStroke);</div><div class="line">    </div><div class="line">    [[NSColor grayColor] set];</div><div class="line">    CGFloat startAngle = M_PI * 0.5 - self.progress * M_PI;</div><div class="line">    CGFloat endAngle = M_PI * 0.5 + self.progress * M_PI;</div><div class="line">    CGContextAddArc(ctx, xCenter, yCenter, radius, startAngle, endAngle, 0);</div><div class="line">    CGContextFillPath(ctx);</div><div class="line">    </div><div class="line">    NSString *progressStr = [NSString stringWithFormat:@&quot;%.0f%%&quot;, self.progress * 100];</div><div class="line">    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];</div><div class="line">    attributes[NSFontAttributeName] = [NSFont boldSystemFontOfSize:14];</div><div class="line">    attributes[NSForegroundColorAttributeName] = [NSColor whiteColor];</div><div class="line">    [self setCenterProgressText:progressStr withAttributes:attributes];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>核心代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CGFloat startAngle = M_PI * 0.5 - self.progress * M_PI;</div><div class="line">CGFloat endAngle = M_PI * 0.5 + self.progress * M_PI;</div></pre></td></tr></table></figure></p>
+<p>水位逐渐上升，则类似不停一个以y轴对称的圆弧，弧度不停的增加，直至变成圆<br>因此先计算出圆弧的起始角度，同时计算出以Y轴对称的结束角度，接着在两个角度间形成的圆弧填充颜色就可以了。<br>代码已经分享到github了，欢迎star<br><a href="https://github.com/peterHchina/ProgressForMac" target="_blank" rel="external">Demo in Github</a></p>
+
       
     </div>
 
